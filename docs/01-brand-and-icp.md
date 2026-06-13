@@ -2,9 +2,9 @@
 
 ## 1. Brand Identity
 *   **Arabic Name:** وفاء للجمال
-*   **English Name:** Nama Beauty
+*   **English Name:** Wafa Beauty
 *   **Domain:** `wafabeauty.shop`
-*   **Logo Concept:** A minimalist, premium circle with the letter "N" inside, positioned on the right side of the header. Next to it, the text "وفاء للجمال" with "Nama Beauty" elegantly placed underneath.
+*   **Logo Concept:** A minimalist, premium circle with the letter "W" inside, positioned on the right side of the header. Next to it, the text "وفاء للجمال" with "Wafa Beauty" elegantly placed underneath.
 *   **Brand Colors:** Clinical Blue/Slate, Crisp White, Trust Green (for verification/badges).
 *   **Vibe:** A high-end, research-backed dermatology clinic operating in Riyadh. Not a cheap dropshipping store.
 

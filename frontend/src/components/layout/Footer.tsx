@@ -106,7 +106,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-white/40 text-xs font-medium tracking-wide">
-            © {new Date().getFullYear()} NAMA BEAUTY. ALL RIGHTS RESERVED.
+            © {new Date().getFullYear()} WAFA BEAUTY. ALL RIGHTS RESERVED.
           </p>
           
           <div className="flex items-center gap-6">

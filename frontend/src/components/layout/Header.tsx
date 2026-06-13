@@ -31,7 +31,7 @@ export default function Header() {
           {/* Logo - Right Side (RTL) */}
           <Link href="/" className="flex items-center gap-4 flex-shrink-0 group">
             <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-brand-blue flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
-              <span className="text-brand-gold font-black text-xl md:text-2xl">N</span>
+              <span className="text-brand-gold font-black text-xl md:text-2xl">W</span>
             </div>
             <div className="leading-none flex flex-col justify-center">
               <span className="font-black text-brand-blue text-lg md:text-xl tracking-tight">وفاء للجمال</span>

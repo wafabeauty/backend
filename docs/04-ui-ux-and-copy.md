@@ -2,7 +2,7 @@
 
 ## 1. Global Layout
 *   **Header:** 
-    *   Right side: Logo (Circle with 'N', brand color). Next to it: "وفاء للجمال" and below it "Nama Beauty".
+    *   Right side: Logo (Circle with 'W', brand color). Next to it: "وفاء للجمال" and below it "Wafa Beauty".
     *   Middle: Navigation Menu (Home, Collection, About, Contact).
     *   Left side: Cart Icon with item count badge.
 *   **Footer:** Links to Privacy Policy, Terms of Service, Refund Policy, Contact Us. Copyright "2026 وفاء للجمال".
