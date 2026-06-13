@@ -2,7 +2,6 @@ import asyncio
 import hashlib
 import logging
 import time
-from typing import Optional
 
 import httpx
 
@@ -17,7 +16,7 @@ def _sha256(value: str) -> str:
 
 
 def _normalize_phone_ksa(phone: str) -> str:
-    """Convert 05XXXXXXXX to 9665XXXXXXXX (no + prefix, for FB & Snap)."""
+    """Convert 05XXXXXXXX → 9665XXXXXXXX (no + prefix, for FB & Snap)."""
     phone = phone.strip().lstrip("+")
     if phone.startswith("05"):
         phone = "966" + phone[1:]
@@ -27,11 +26,14 @@ def _normalize_phone_ksa(phone: str) -> str:
 
 
 def _normalize_phone_e164(phone: str) -> str:
-    """Convert 05XXXXXXXX to +9665XXXXXXXX (with + prefix, for TikTok)."""
+    """Convert 05XXXXXXXX → +9665XXXXXXXX (with + prefix, for TikTok)."""
     return "+" + _normalize_phone_ksa(phone)
 
 
 async def send_fb_capi(order: Order, event_id: str) -> bool:
+    if not settings.ENABLE_FB_CAPI:
+        logger.info("Facebook CAPI disabled via ENABLE_FB_CAPI=false, skipping")
+        return False
     if not settings.FB_ACCESS_TOKEN or not settings.FB_PIXEL_ID:
         logger.warning("Facebook CAPI not configured, skipping")
         return False
@@ -61,7 +63,7 @@ async def send_fb_capi(order: Order, event_id: str) -> bool:
         ]
     }
 
-    url = f"https://graph.facebook.com/v19.0/{settings.FB_PIXEL_ID}/events"
+    url = f"https://graph.facebook.com/{settings.FB_API_VERSION}/{settings.FB_PIXEL_ID}/events"
     params = {"access_token": settings.FB_ACCESS_TOKEN}
 
     try:
@@ -79,11 +81,13 @@ async def send_fb_capi(order: Order, event_id: str) -> bool:
 
 
 async def send_tiktok_capi(order: Order, event_id: str) -> bool:
+    if not settings.ENABLE_TIKTOK_CAPI:
+        logger.info("TikTok CAPI disabled via ENABLE_TIKTOK_CAPI=false, skipping")
+        return False
     if not settings.TIKTOK_ACCESS_TOKEN or not settings.TIKTOK_PIXEL_ID:
         logger.warning("TikTok CAPI not configured, skipping")
         return False
 
-    # TikTok requires E.164 format (+9665XXXXXXXX) before hashing
     hashed_phone = _sha256(_normalize_phone_e164(order.phone))
     hashed_name = _sha256(order.full_name)
 
@@ -106,7 +110,7 @@ async def send_tiktok_capi(order: Order, event_id: str) -> bool:
         },
     }
 
-    url = "https://business-api.tiktok.com/open_api/v1.3/pixel/track/"
+    url = f"https://business-api.tiktok.com/open_api/{settings.TIKTOK_API_VERSION}/pixel/track/"
     headers = {"Access-Token": settings.TIKTOK_ACCESS_TOKEN}
 
     try:
@@ -124,11 +128,13 @@ async def send_tiktok_capi(order: Order, event_id: str) -> bool:
 
 
 async def send_snap_capi(order: Order, event_id: str) -> bool:
+    if not settings.ENABLE_SNAP_CAPI:
+        logger.info("Snapchat CAPI disabled via ENABLE_SNAP_CAPI=false, skipping")
+        return False
     if not settings.SNAP_ACCESS_TOKEN or not settings.SNAP_PIXEL_ID:
         logger.warning("Snapchat CAPI not configured, skipping")
         return False
 
-    # Snapchat uses same format as FB: no + prefix
     hashed_phone = _sha256(_normalize_phone_ksa(order.phone))
     hashed_name = _sha256(order.full_name)
 
@@ -174,7 +180,7 @@ async def send_snap_capi(order: Order, event_id: str) -> bool:
 
 
 async def fire_all_capi(order: Order, event_id: str) -> None:
-    """Fire all CAPI events concurrently. Errors are swallowed — never block the response."""
+    """Fire all enabled CAPI events concurrently. Errors are swallowed — never block the response."""
     results = await asyncio.gather(
         send_fb_capi(order, event_id),
         send_tiktok_capi(order, event_id),

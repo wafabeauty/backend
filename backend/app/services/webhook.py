@@ -11,7 +11,6 @@ logger = logging.getLogger(__name__)
 
 
 def _format_items(items: list[Any]) -> str:
-    """Format cart items into a human-readable string for the sheet."""
     parts = []
     for item in items:
         if isinstance(item, dict):
@@ -24,7 +23,6 @@ def _format_items(items: list[Any]) -> str:
 
 
 async def send_to_google_sheet(order: Order) -> bool:
-    """Send order data to Google Sheets via Apps Script webhook."""
     if not settings.WEBHOOK_SHEET_URL:
         logger.warning("WEBHOOK_SHEET_URL not configured, skipping webhook")
         return False
@@ -40,9 +38,13 @@ async def send_to_google_sheet(order: Order) -> bool:
         "createdAt": order.created_at.isoformat() if order.created_at else datetime.now(timezone.utc).isoformat(),
     }
 
+    headers: dict[str, str] = {"Content-Type": "application/json"}
+    if settings.SHEETS_WEBHOOK_SECRET:
+        headers["X-Webhook-Secret"] = settings.SHEETS_WEBHOOK_SECRET
+
     try:
         async with httpx.AsyncClient(timeout=10.0) as client:
-            response = await client.post(settings.WEBHOOK_SHEET_URL, json=payload)
+            response = await client.post(settings.WEBHOOK_SHEET_URL, json=payload, headers=headers)
             if response.status_code == 200:
                 logger.info(f"Webhook sent successfully for order {order.id}")
                 return True

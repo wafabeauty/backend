@@ -12,6 +12,7 @@ from app.models.order import Order
 from app.schemas.order import CreateOrderRequest, UpsellUpdateRequest, OrderResponse
 from app.services.webhook import send_to_google_sheet
 from app.services.capi import fire_all_capi
+from app.services.geoip import check_order_allowed
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/orders", tags=["orders"])
@@ -32,6 +33,11 @@ async def create_order(
 ) -> OrderResponse:
     order_id = str(uuid.uuid4())
     client_ip = _get_client_ip(request)
+
+    # GeoIP validation — block non-KSA and suspicious/VPN IPs
+    geo = await check_order_allowed(ip=payload.clientIp or client_ip or "", phone=payload.phone)
+    if not geo.allowed:
+        raise HTTPException(status_code=403, detail=geo.message or "الطلب غير مسموح به من موقعك الحالي")
 
     order = Order(
         id=order_id,
