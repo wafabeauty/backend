@@ -17,10 +17,12 @@ export default function HomeHero() {
           {/* Text Content */}
           <div className="text-right lg:pr-10">
             {/* Elegant Top Badge */}
-            <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-5 py-2 mb-8 animate-slide-bottom" style={{ animationDelay: '0.1s' }}>
-              <span className="w-1.5 h-1.5 bg-brand-gold rounded-full" />
-              <span className="text-xs font-bold text-brand-gold uppercase tracking-[0.2em]">Clinical Solutions</span>
-              <span className="w-1.5 h-1.5 bg-brand-gold rounded-full" />
+            <div className="flex justify-center mb-8 w-full">
+              <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-5 py-2 animate-slide-bottom" style={{ animationDelay: '0.1s' }}>
+                <span className="w-1.5 h-1.5 bg-brand-gold rounded-full" />
+                <span className="text-xs font-bold text-brand-gold uppercase tracking-[0.2em]">Clinical Solutions</span>
+                <span className="w-1.5 h-1.5 bg-brand-gold rounded-full" />
+              </div>
             </div>
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-[1.1] mb-6 text-white animate-slide-bottom" style={{ animationDelay: '0.2s' }}>
@@ -96,7 +98,7 @@ export default function HomeHero() {
               <div className="relative z-10 text-center animate-float" style={{ animationDelay: '2s' }}>
                 <div className="w-48 h-48 rounded-full bg-gradient-to-tr from-brand-gold/40 to-brand-gold/10 blur-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10" />
                 <div className="w-40 h-56 rounded-t-full rounded-b-3xl bg-white/10 border-2 border-white/30 backdrop-blur-md mx-auto flex items-center justify-center shadow-[inset_0_0_20px_rgba(255,255,255,0.2)]">
-                  <span className="text-brand-gold font-black text-4xl">N</span>
+                  <span className="text-brand-gold font-black text-4xl">W</span>
                 </div>
               </div>
 

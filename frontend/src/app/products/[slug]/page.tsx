@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import CartDrawer from '@/components/cart/CartDrawer'
@@ -23,9 +24,25 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const product = getProductBySlug(params.slug)
   if (!product) return { title: 'المنتج غير موجود' }
+  const url = `https://wafabeauty.shop/products/${product.slug}`
   return {
     title: `${product.nameAr} | وفاء للجمال`,
     description: product.descriptionAr,
+    keywords: [product.nameAr, product.nameEn, 'وفاء للجمال', 'Wafa Beauty', 'السعودية', 'KSA', ...product.ingredients],
+    alternates: { canonical: url },
+    openGraph: {
+      title: `${product.nameAr} | وفاء للجمال`,
+      description: product.descriptionAr,
+      url,
+      type: 'website',
+      locale: 'ar_SA',
+      siteName: 'وفاء للجمال',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${product.nameAr} | وفاء للجمال`,
+      description: product.descriptionAr,
+    },
   }
 }
 
@@ -35,8 +52,31 @@ export default function ProductPage({ params }: PageProps) {
 
   const crossSells = getCrossSells(params.slug)
 
+  const productJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.nameAr,
+    description: product.descriptionAr,
+    brand: { '@type': 'Brand', name: 'وفاء للجمال' },
+    offers: {
+      '@type': 'Offer',
+      price: product.price,
+      priceCurrency: 'SAR',
+      availability: 'https://schema.org/InStock',
+      url: `https://wafabeauty.shop/products/${product.slug}`,
+      seller: { '@type': 'Organization', name: 'وفاء للجمال' },
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: product.rating,
+      reviewCount: product.reviewCount,
+      bestRating: 5,
+    },
+  }
+
   return (
     <>
+      <Script id={`product-jsonld-${product.slug}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }} />
       <Header />
       <CartDrawer />
       <CheckoutModal />

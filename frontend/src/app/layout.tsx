@@ -2,16 +2,50 @@ import type { Metadata } from 'next'
 import Script from 'next/script'
 import './globals.css'
 
+const SITE_URL = 'https://wafabeauty.shop'
+
 export const metadata: Metadata = {
-  title: 'وفاء للجمال | حلول سريرية للبشرة الخليجية',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: 'وفاء للجمال | حلول سريرية للبشرة الخليجية',
+    template: '%s | وفاء للجمال',
+  },
   description:
-    'وفاء للجمال - حلول تجميلية سريرية مصممة خصيصاً لمواجهة تحديات البيئة الخليجية. سيروم الكوجيك، رولر الكافيين، مقشر ملح البحر.',
-  keywords: 'وفاء للجمال، سيروم تفتيح، كوجيك أسيد، هالات سوداء، تساقط شعر، الرياض، المملكة العربية السعودية',
+    'وفاء للجمال – حلول تجميلية سريرية مصممة خصيصاً لمواجهة تحديات البيئة الخليجية. سيروم كوجيك أسيد، رولر الكافيين، مقشر ملح البحر. شحن سريع داخل السعودية، الدفع عند الاستلام.',
+  keywords: [
+    'وفاء للجمال', 'سيروم تفتيح البشرة', 'كوجيك أسيد', 'هالات سوداء',
+    'علاج التصبغات', 'رولر الكافيين', 'مقشر ملح البحر', 'منتجات تجميل سريرية',
+    'بشرة خليجية', 'الرياض', 'جدة', 'المملكة العربية السعودية', 'السعودية',
+    'Wafa Beauty', 'kojic serum Saudi Arabia', 'skincare KSA',
+  ],
+  authors: [{ name: 'وفاء للجمال', url: SITE_URL }],
+  creator: 'وفاء للجمال',
+  publisher: 'وفاء للجمال',
+  alternates: {
+    canonical: SITE_URL,
+    languages: { 'ar-SA': SITE_URL },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-snippet': -1, 'max-image-preview': 'large' },
+  },
   openGraph: {
     title: 'وفاء للجمال | حلول سريرية للبشرة الخليجية',
-    description: 'حلول تجميلية سريرية مصممة للبيئة الخليجية',
+    description: 'حلول تجميلية سريرية مصممة للبيئة الخليجية – شحن سريع، الدفع عند الاستلام',
+    url: SITE_URL,
+    siteName: 'وفاء للجمال',
     locale: 'ar_SA',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'وفاء للجمال | حلول سريرية للبشرة الخليجية',
+    description: 'حلول تجميلية سريرية مصممة للبيئة الخليجية',
+    site: '@wafabeauty',
+  },
+  verification: {
+    google: '',   // Add your Google Search Console verification token here
   },
 }
 

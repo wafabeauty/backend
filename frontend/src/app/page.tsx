@@ -1,4 +1,37 @@
+import type { Metadata } from 'next'
+import Script from 'next/script'
 import Header from '@/components/layout/Header'
+
+export const metadata: Metadata = {
+  title: 'وفاء للجمال | حلول سريرية للبشرة الخليجية',
+  description: 'وفاء للجمال – سيروم كوجيك أسيد، رولر الكافيين، مقشر ملح البحر. حلول تجميلية سريرية للمرأة السعودية. شحن سريع، الدفع عند الاستلام.',
+  alternates: { canonical: 'https://wafabeauty.shop' },
+}
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'وفاء للجمال',
+  alternateName: 'Wafa Beauty',
+  url: 'https://wafabeauty.shop',
+  logo: 'https://wafabeauty.shop/logo.png',
+  description: 'حلول تجميلية سريرية مصممة خصيصاً للمرأة الخليجية',
+  areaServed: { '@type': 'Country', name: 'Saudi Arabia' },
+  contactPoint: { '@type': 'ContactPoint', contactType: 'customer service', availableLanguage: 'Arabic' },
+  sameAs: ['https://www.instagram.com/wafabeauty', 'https://www.tiktok.com/@wafabeauty'],
+}
+
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'وفاء للجمال',
+  url: 'https://wafabeauty.shop',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: 'https://wafabeauty.shop/products/{search_term_string}',
+    'query-input': 'required name=search_term_string',
+  },
+}
 import Footer from '@/components/layout/Footer'
 import CartDrawer from '@/components/cart/CartDrawer'
 import CheckoutModal from '@/components/checkout/CheckoutModal'
@@ -12,6 +45,8 @@ import TrustBadges from '@/components/ui/TrustBadges'
 export default function HomePage() {
   return (
     <>
+      <Script id="org-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
+      <Script id="website-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
       <Header />
       <CartDrawer />
       <CheckoutModal />
