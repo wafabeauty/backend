@@ -1,24 +1,33 @@
 FROM node:20-alpine AS base
 
-# Install dependencies only when needed
+# ── Dependencies ──────────────────────────────────────────────────────────────
 FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
 
-COPY package.json ./
-RUN npm install --frozen-lockfile
-
-# Rebuild the source code only when needed
+# ── Builder ───────────────────────────────────────────────────────────────────
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# NEXT_PUBLIC_* vars must be available at build time (they are inlined into the JS bundle)
+ARG NEXT_PUBLIC_API_URL
+ARG NEXT_PUBLIC_FB_PIXEL_ID
+ARG NEXT_PUBLIC_TIKTOK_PIXEL_ID
+ARG NEXT_PUBLIC_SNAP_PIXEL_ID
+
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_FB_PIXEL_ID=$NEXT_PUBLIC_FB_PIXEL_ID
+ENV NEXT_PUBLIC_TIKTOK_PIXEL_ID=$NEXT_PUBLIC_TIKTOK_PIXEL_ID
+ENV NEXT_PUBLIC_SNAP_PIXEL_ID=$NEXT_PUBLIC_SNAP_PIXEL_ID
 ENV NEXT_TELEMETRY_DISABLED=1
 
 RUN npm run build
 
-# Production image
+# ── Production image ──────────────────────────────────────────────────────────
 FROM base AS runner
 WORKDIR /app
 
@@ -35,7 +44,6 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 USER nextjs
 
 EXPOSE 3000
-
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
