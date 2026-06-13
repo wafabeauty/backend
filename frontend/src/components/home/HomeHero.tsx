@@ -2,98 +2,119 @@ import Link from 'next/link'
 
 export default function HomeHero() {
   return (
-    <section className="relative bg-gradient-to-br from-brand-blue via-brand-blue-light to-brand-blue-dark text-white overflow-hidden">
-      {/* Decorative circles */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-white/5 rounded-full -translate-x-32 -translate-y-32" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/5 rounded-full translate-x-48 translate-y-48" />
+    <section className="relative min-h-[90vh] bg-brand-blue flex items-center overflow-hidden">
+      {/* Premium Background Elements */}
+      <div className="absolute inset-0 bg-premium-gradient opacity-90" />
+      <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.03] mix-blend-overlay" />
+      
+      {/* Abstract Glowing Orbs */}
+      <div className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] bg-brand-gold/10 rounded-full blur-[120px] mix-blend-screen animate-pulse" style={{ animationDuration: '8s' }} />
+      <div className="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-brand-green/20 rounded-full blur-[100px] mix-blend-screen" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          
           {/* Text Content */}
-          <div className="text-right">
-            {/* Clinical badge */}
-            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 mb-6">
-              <span className="w-2 h-2 bg-brand-green rounded-full animate-pulse" />
-              <span className="text-sm font-medium text-blue-100">حلول سريرية للبيئة الخليجية</span>
+          <div className="text-right lg:pr-10">
+            {/* Elegant Top Badge */}
+            <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-5 py-2 mb-8 animate-slide-bottom" style={{ animationDelay: '0.1s' }}>
+              <span className="w-1.5 h-1.5 bg-brand-gold rounded-full" />
+              <span className="text-xs font-bold text-brand-gold uppercase tracking-[0.2em]">Clinical Solutions</span>
+              <span className="w-1.5 h-1.5 bg-brand-gold rounded-full" />
             </div>
 
-            <h1 className="text-3xl md:text-5xl font-black leading-tight mb-6">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-[1.1] mb-6 text-white animate-slide-bottom" style={{ animationDelay: '0.2s' }}>
               بشرتك تستحق
               <br />
-              <span className="text-yellow-300">حلاً طبياً</span>
+              <span className="text-transparent bg-clip-text bg-gold-gradient">
+                حلاً طبياً
+              </span>
               <br />
               لا مجرد منتج
             </h1>
 
-            <p className="text-blue-100 text-base md:text-lg leading-relaxed mb-4">
+            <div className="w-20 h-1 bg-brand-gold mb-8 animate-slide-bottom" style={{ animationDelay: '0.3s' }} />
+
+            <p className="text-white/80 text-lg md:text-xl leading-relaxed mb-6 font-medium animate-slide-bottom" style={{ animationDelay: '0.4s' }}>
               مياه التحلية القاسية والحرارة الشديدة تؤثران على بشرتك يومياً.
-              <br />
-              <strong className="text-white">ليس خطأك. إنها البيئة.</strong>
-            </p>
-            <p className="text-blue-200 text-sm leading-relaxed mb-8">
-              صممنا بروتوكولاً سريرياً ثلاثياً مستوحى من أحدث أبحاث الجلدية
-              لمواجهة تحديات البيئة الخليجية بشكل مباشر.
+              <span className="block text-white mt-2">ليس خطأك. إنها البيئة.</span>
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Link
-                href="/products/kojic-serum"
-                className="bg-white text-brand-blue font-bold py-4 px-8 rounded-xl hover:bg-blue-50 transition-all duration-200 active:scale-95 shadow-xl text-center"
-              >
-                اكتشفي البروتوكول الآن
+            <p className="text-white/60 text-sm md:text-base leading-relaxed mb-10 max-w-lg animate-slide-bottom" style={{ animationDelay: '0.5s' }}>
+              صممنا بروتوكولاً سريرياً ثلاثياً مستوحى من أحدث أبحاث الجلدية،
+              لمواجهة تحديات البيئة الخليجية بشكل مباشر وبنتائج مُثبتة.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 animate-slide-bottom" style={{ animationDelay: '0.6s' }}>
+              <Link href="/products/kojic-serum" className="btn-gold text-center">
+                اكتشفي البروتوكول
               </Link>
-              <Link
-                href="#products"
-                className="border-2 border-white/40 text-white font-semibold py-4 px-8 rounded-xl hover:bg-white/10 transition-all duration-200 text-center"
-              >
-                تعرفي على المنتجات
+              <Link href="#products" className="bg-white/5 backdrop-blur-md border border-white/20 text-white font-bold py-4 px-10 rounded-full hover:bg-white/10 transition-all duration-300 text-center">
+                تصفح المنتجات
               </Link>
             </div>
 
-            {/* Social Proof Mini */}
-            <div className="flex items-center gap-3 mt-8">
-              <div className="flex -space-x-2 space-x-reverse">
-                {['س', 'ن', 'م', 'ف'].map((letter, i) => (
-                  <div
-                    key={i}
-                    className="w-8 h-8 rounded-full bg-gradient-to-br from-yellow-300 to-yellow-500 border-2 border-white flex items-center justify-center text-brand-blue font-bold text-xs"
-                  >
-                    {letter}
+            {/* Premium Social Proof */}
+            <div className="flex items-center gap-6 mt-12 pt-8 border-t border-white/10 animate-slide-bottom" style={{ animationDelay: '0.7s' }}>
+              <div className="flex -space-x-4 space-x-reverse">
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="w-12 h-12 rounded-full border-2 border-brand-blue bg-white/10 backdrop-blur-md flex items-center justify-center">
+                    <svg className="w-5 h-5 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
                   </div>
                 ))}
               </div>
               <div>
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1 mb-1">
                   {[1, 2, 3, 4, 5].map((s) => (
-                    <span key={s} className="text-yellow-400 text-xs">★</span>
+                    <svg key={s} className="w-4 h-4 text-brand-gold" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
                   ))}
                 </div>
-                <p className="text-blue-200 text-xs">+3,800 عميلة سعيدة</p>
+                <p className="text-white/60 text-xs font-semibold tracking-wider uppercase">Over 3,800+ Verified Reviews</p>
               </div>
             </div>
           </div>
 
-          {/* Visual */}
-          <div className="hidden md:flex items-center justify-center">
-            <div className="relative">
-              {/* Main product visual */}
-              <div className="w-72 h-72 rounded-3xl bg-white/10 border border-white/20 backdrop-blur-sm flex items-center justify-center shadow-2xl">
-                <div className="text-center">
-                  <div className="text-8xl mb-4">✨</div>
-                  <p className="text-white font-bold text-lg">البروتوكول السريري</p>
-                  <p className="text-blue-200 text-sm">الثلاثي الذهبي</p>
+          {/* Visual Side */}
+          <div className="hidden lg:flex items-center justify-center relative h-full min-h-[600px] animate-slide-right">
+            {/* The Glass Product Display */}
+            <div className="relative w-full max-w-md aspect-[4/5] rounded-[2.5rem] bg-white/5 backdrop-blur-2xl border border-white/20 shadow-2xl overflow-hidden p-8 flex flex-col items-center justify-center">
+              
+              {/* Floating Element 1 */}
+              <div className="absolute top-10 right-10 animate-float" style={{ animationDelay: '0s' }}>
+                <div className="w-16 h-16 rounded-full bg-brand-gold/20 backdrop-blur-md flex items-center justify-center border border-brand-gold/30 shadow-lg">
+                  <svg className="w-6 h-6 text-brand-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                  </svg>
                 </div>
               </div>
 
-              {/* Floating badges */}
-              <div className="absolute -top-4 -right-4 bg-brand-green text-white text-xs font-bold px-3 py-2 rounded-xl shadow-lg">
-                🧪 مكونات معتمدة طبياً
+              {/* Center Abstract Product Representation */}
+              <div className="relative z-10 text-center animate-float" style={{ animationDelay: '2s' }}>
+                <div className="w-48 h-48 rounded-full bg-gradient-to-tr from-brand-gold/40 to-brand-gold/10 blur-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10" />
+                <div className="w-40 h-56 rounded-t-full rounded-b-3xl bg-white/10 border-2 border-white/30 backdrop-blur-md mx-auto flex items-center justify-center shadow-[inset_0_0_20px_rgba(255,255,255,0.2)]">
+                  <span className="text-brand-gold font-black text-4xl">N</span>
+                </div>
               </div>
-              <div className="absolute -bottom-4 -left-4 bg-white text-brand-blue text-xs font-bold px-3 py-2 rounded-xl shadow-lg">
-                💳 الدفع عند الاستلام
+
+              <div className="mt-12 text-center relative z-10">
+                <p className="text-white font-bold text-xl tracking-wide">Wafa Beauty Protocol</p>
+                <p className="text-brand-gold text-sm tracking-[0.3em] uppercase mt-2">Dermatologist Approved</p>
               </div>
+
+              {/* Floating Element 2 */}
+              <div className="absolute bottom-10 left-10 animate-float" style={{ animationDelay: '4s' }}>
+                <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-lg">
+                  <span className="text-white font-bold text-xs tracking-widest">KSA</span>
+                </div>
+              </div>
+
             </div>
           </div>
+
         </div>
       </div>
     </section>

@@ -78,37 +78,38 @@ export default function FlashUpsell() {
   if (!isOpen || !upsellProduct) return null
 
   const progress = ((COUNTDOWN_SECONDS - secondsLeft) / COUNTDOWN_SECONDS) * 100
-  const circumference = 2 * Math.PI * 22
+  const circumference = 2 * Math.PI * 26
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+      <div className="absolute inset-0 bg-brand-blue/90 backdrop-blur-xl" />
 
       {/* Modal */}
       <div
-        className="relative w-full max-w-sm bg-white rounded-3xl shadow-2xl overflow-hidden animate-slide-bottom"
+        className="relative w-full max-w-sm bg-brand-off-white rounded-[2.5rem] shadow-premium overflow-hidden animate-slide-bottom border border-white/10"
         style={{ direction: 'rtl' }}
       >
         {/* Top banner */}
-        <div className="bg-gradient-to-r from-brand-green to-brand-green-light p-4 text-white text-center">
-          <p className="text-xs font-semibold text-green-100 mb-1">⚡ عرض لمرة واحدة فقط</p>
-          <p className="font-black text-xl">أكملي بروتوكولك السريري!</p>
+        <div className="bg-brand-gold p-6 text-brand-blue-dark text-center relative overflow-hidden">
+          <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-10 mix-blend-overlay" />
+          <p className="text-[10px] font-black tracking-[0.3em] uppercase mb-2 opacity-80">One Time Offer</p>
+          <p className="font-black text-2xl tracking-tight">أكملي بروتوكولك السريري!</p>
         </div>
 
-        <div className="p-5">
+        <div className="p-8">
           {/* Countdown */}
-          <div className="flex items-center justify-center mb-5">
-            <div className="relative w-14 h-14">
-              <svg className="w-14 h-14 -rotate-90" viewBox="0 0 50 50">
-                <circle cx="25" cy="25" r="22" fill="none" stroke="#f3f4f6" strokeWidth="4" />
+          <div className="flex items-center justify-center mb-8">
+            <div className="relative w-16 h-16 mr-4">
+              <svg className="w-16 h-16 -rotate-90" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="26" fill="none" stroke="#EFEBE3" strokeWidth="3" />
                 <circle
-                  cx="25"
-                  cy="25"
-                  r="22"
+                  cx="30"
+                  cy="30"
+                  r="26"
                   fill="none"
-                  stroke="#1A7F5A"
-                  strokeWidth="4"
+                  stroke="#D4AF37"
+                  strokeWidth="3"
                   strokeDasharray={circumference}
                   strokeDashoffset={circumference * (progress / 100)}
                   strokeLinecap="round"
@@ -116,68 +117,79 @@ export default function FlashUpsell() {
                 />
               </svg>
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="font-black text-brand-green text-lg leading-none">{secondsLeft}</span>
+                <span className="font-black text-brand-blue text-xl leading-none">{secondsLeft}</span>
               </div>
             </div>
-            <div className="mr-3">
-              <p className="text-gray-500 text-xs">العرض ينتهي خلال</p>
-              <p className="font-bold text-gray-700 text-sm">{secondsLeft} ثانية</p>
+            <div>
+              <p className="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-1">Offer Expires In</p>
+              <p className="font-black text-brand-blue text-lg">{secondsLeft} ثانية</p>
             </div>
           </div>
 
           {/* Product */}
-          <div className="flex items-center gap-3 bg-gray-50 rounded-2xl p-3 mb-4">
+          <div className="flex items-center gap-4 bg-white rounded-2xl p-4 border border-brand-blue/5 shadow-sm mb-6">
             <div
-              className="w-16 h-16 rounded-xl flex items-center justify-center text-3xl flex-shrink-0"
+              className="w-20 h-20 rounded-xl flex items-center justify-center text-white/50 flex-shrink-0"
               style={{
                 background: `linear-gradient(135deg, ${upsellProduct.gradientFrom}, ${upsellProduct.gradientTo})`,
               }}
             >
-              {upsellProduct.category === 'serum' ? '💊' : upsellProduct.category === 'eye-care' ? '👁️' : '🌿'}
+              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+              </svg>
             </div>
             <div className="flex-1 text-right">
-              <p className="font-bold text-gray-800 text-sm leading-tight line-clamp-2">
+              <p className="font-black text-brand-blue text-sm leading-tight mb-1">
                 {upsellProduct.nameAr}
               </p>
-              <p className="text-gray-500 text-xs mt-1 line-clamp-1">{upsellProduct.subtitleAr}</p>
+              <p className="text-slate-400 text-xs font-medium line-clamp-2 leading-relaxed">{upsellProduct.subtitleAr}</p>
             </div>
           </div>
 
           {/* Offer */}
-          <div className="text-center bg-brand-green/5 border border-brand-green/20 rounded-2xl p-3 mb-5">
-            <p className="text-gray-600 text-xs mb-1">السعر الأصلي</p>
-            <p className="text-gray-400 text-sm line-through mb-1">199 ريال</p>
-            <p className="font-black text-brand-green text-3xl">{UPSELL_PRICE} ريال</p>
-            <p className="text-brand-green text-xs font-semibold mt-1">
-              أضيفي لبروتوكولك العلاجي بسعر خاص!
+          <div className="text-center bg-brand-gold/5 border border-brand-gold/20 rounded-2xl p-5 mb-8">
+            <div className="flex items-center justify-center gap-3 mb-2">
+              <span className="text-[10px] font-black bg-red-50 text-red-500 px-1.5 py-0.5 rounded-sm border border-red-100">
+                -{Math.round((((Math.round(upsellProduct.price / 0.7)) - UPSELL_PRICE) / (Math.round(upsellProduct.price / 0.7))) * 100)}%
+              </span>
+              <span className="text-slate-400 text-sm line-through font-bold">{Math.round(upsellProduct.price / 0.7)} SAR</span>
+              <svg className="w-4 h-4 text-brand-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+              <span className="font-black text-brand-blue text-3xl">{UPSELL_PRICE} <span className="text-sm">SAR</span></span>
+            </div>
+            <p className="text-brand-gold font-bold text-xs uppercase tracking-widest mt-2">
+              Exclusive Protocol Addition
             </p>
           </div>
 
           {/* Action Buttons */}
-          <div className="space-y-2">
+          <div className="space-y-4">
             <button
               onClick={handleAccept}
               disabled={isProcessing}
-              className={`w-full bg-brand-green text-white font-black py-4 rounded-xl transition-all duration-200 text-base ${
-                isProcessing ? 'opacity-70 cursor-not-allowed' : 'hover:bg-brand-green-light active:scale-95 shadow-lg shadow-brand-green/25'
+              className={`w-full bg-brand-blue text-white font-black py-5 rounded-full transition-all duration-300 text-lg flex items-center justify-center gap-3 ${
+                isProcessing ? 'opacity-70 cursor-not-allowed' : 'hover:bg-brand-blue-light hover:shadow-premium active:scale-[0.98]'
               }`}
             >
               {isProcessing ? (
-                <span className="flex items-center justify-center gap-2">
-                  <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                  جارٍ الإضافة...
-                </span>
+                <span className="w-5 h-5 border-2 border-white/30 border-t-brand-gold rounded-full animate-spin" />
               ) : (
-                `✓ نعم! أضيفي للطلب – ${UPSELL_PRICE} ريال فقط`
+                <>
+                  أضيفي للطلب بسعر خاص
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                  </svg>
+                </>
               )}
             </button>
 
             <button
               onClick={handleDecline}
               disabled={isProcessing}
-              className="w-full text-gray-400 text-xs py-2 hover:text-gray-600 transition-colors"
+              className="w-full text-slate-400 text-xs font-bold uppercase tracking-widest py-3 hover:text-brand-blue transition-colors"
             >
-              لا شكراً، لا أريد هذا العرض
+              No Thanks, Skip Offer
             </button>
           </div>
         </div>

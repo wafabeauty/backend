@@ -23,80 +23,66 @@ const reviews = [
     text: 'شعري كان يتساقط بشكل مخيف بسبب المياه. بعد شهر من المقشر تقلّص التساقط بشكل كبير جداً. ناصحة كل بنت تجربه.',
     verified: true,
   },
-  {
-    name: 'منى القحطاني',
-    city: 'الرياض',
-    rating: 5,
-    product: 'سيروم الكوجيك',
-    text: 'المنتج يستاهل كل ريال. كنت متشككة في البداية بس بعد ما جربت ما راح أوقف. بشرتي صارت أكثر إشراقاً بشكل واضح.',
-    verified: true,
-  },
-  {
-    name: 'فاطمة العمري',
-    city: 'مكة المكرمة',
-    rating: 5,
-    product: 'رولر الكافيين',
-    text: 'أنصح فيه لأي أم مشغولة. النوم الناقص يبيّن على وجهي كثير. هذا الرولر يخفي التعب بشكل سحري. شكراً وفاء للجمال!',
-    verified: true,
-  },
-  {
-    name: 'ريم السبيعي',
-    city: 'الرياض',
-    rating: 5,
-    product: 'مقشر ملح البحر',
-    text: 'من أفضل مشترياتي أونلاين. رائحته رائعة والنتيجة أروع. فروة رأسي صارت أهدأ كثيراً من قبل.',
-    verified: true,
-  },
 ]
 
 export default function SocialProof() {
   return (
-    <section className="py-20 px-4 bg-brand-off-white">
+    <section className="py-24 px-4 bg-white relative">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="section-title">ماذا تقول عميلاتنا؟</h2>
-          <div className="flex items-center justify-center gap-2 mt-3">
-            <div className="flex">
+        <div className="text-center mb-16">
+          <span className="text-brand-gold font-bold tracking-[0.2em] uppercase text-xs mb-3 block">Verified Results</span>
+          <h2 className="section-title">نتائج حقيقية لعميلاتنا</h2>
+          <div className="flex items-center justify-center gap-3 mt-6">
+            <div className="flex gap-1">
               {[1, 2, 3, 4, 5].map((s) => (
-                <span key={s} className="text-yellow-400 text-xl">★</span>
+                <svg key={s} className="w-5 h-5 text-brand-gold" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
               ))}
             </div>
-            <span className="text-gray-600 font-bold">4.9/5</span>
-            <span className="text-gray-400 text-sm">من أكثر من 3,800 تقييم</span>
+            <span className="text-brand-blue font-black text-lg">4.9/5</span>
+            <span className="text-gray-400 text-sm font-medium border-r border-gray-300 pr-3">من أكثر من 3,800 تقييم</span>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {reviews.map((review) => (
-            <div key={review.name} className="card p-5">
-              <div className="flex items-start justify-between mb-3">
-                <div className="flex items-center gap-2">
-                  <div className="w-9 h-9 rounded-full bg-gradient-to-br from-brand-blue to-brand-blue-light flex items-center justify-center text-white font-bold text-sm">
+            <div key={review.name} className="card p-8 bg-brand-off-white border-none group">
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-brand-blue text-brand-gold flex items-center justify-center font-black text-lg shadow-inner">
                     {review.name[0]}
                   </div>
                   <div>
-                    <p className="font-bold text-gray-800 text-sm">{review.name}</p>
-                    <p className="text-gray-400 text-xs">{review.city}</p>
+                    <p className="font-bold text-brand-blue">{review.name}</p>
+                    <p className="text-gray-400 text-xs font-semibold">{review.city}</p>
                   </div>
                 </div>
                 {review.verified && (
-                  <span className="badge bg-brand-green/10 text-brand-green text-xs">
-                    ✓ موثّق
-                  </span>
+                  <div className="flex items-center gap-1 bg-brand-green/10 text-brand-green px-2 py-1 rounded-md">
+                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-[10px] font-bold uppercase tracking-wider">موثّق</span>
+                  </div>
                 )}
               </div>
 
-              <div className="flex items-center gap-1 mb-2">
+              <div className="flex items-center gap-1 mb-4">
                 {[1, 2, 3, 4, 5].map((s) => (
-                  <span key={s} className="text-yellow-400 text-sm">★</span>
+                  <svg key={s} className="w-4 h-4 text-brand-gold" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
                 ))}
               </div>
 
-              <p className="text-gray-600 text-sm leading-relaxed mb-3">{review.text}</p>
+              <p className="text-slate-600 text-sm leading-relaxed mb-6 font-medium">"{review.text}"</p>
 
-              <p className="text-brand-blue text-xs font-semibold bg-brand-blue/5 rounded-lg px-2 py-1 inline-block">
-                {review.product}
-              </p>
+              <div className="pt-4 border-t border-gray-200/60 mt-auto">
+                <span className="text-brand-blue text-xs font-bold tracking-wide">
+                  منتج المراجعة: <span className="text-brand-gold font-black">{review.product}</span>
+                </span>
+              </div>
             </div>
           ))}
         </div>

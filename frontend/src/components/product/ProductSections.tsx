@@ -11,7 +11,7 @@ const PRODUCT_CONTENT: Record<string, {
 }> = {
   'kojic-serum': {
     problem: {
-      title: 'المشكلة: البيئة الخليجية تسرق إشراقة بشرتك',
+      title: 'البيئة الخليجية تسرق إشراقة بشرتك',
       description:
         'تعيشين في بيئة تجمع بين حرارة شديدة وأشعة شمس قاسية ومياه تحلية مليئة بالمعادن. هذا الثلاثي المدمر هو السبب الحقيقي وراء البقع الداكنة، والبشرة غير المتجانسة، وظهور التصبغات رغم العناية اليومية.',
       bullets: [
@@ -21,7 +21,7 @@ const PRODUCT_CONTENT: Record<string, {
       ],
     },
     science: {
-      title: 'العلم: حمض الكوجيك والمكونات النشطة',
+      title: 'حمض الكوجيك والمكونات النشطة',
       description:
         'سيرومنا يحتوي على تركيز 2% من حمض الكوجيك - المكون الأكثر إثباتاً علمياً لتثبيط إنتاج الميلانين. بالإضافة إلى النياسيناميد 5% لتقليل المسام وفيتامين سي المستقر لتوحيد لون البشرة.',
       bullets: [
@@ -32,7 +32,7 @@ const PRODUCT_CONTENT: Record<string, {
       ],
     },
     relief: {
-      title: 'النتيجة: بشرة نقية وموحدة اللون',
+      title: 'بشرة نقية وموحدة اللون',
       description:
         'في خلال 4 أسابيع من الاستخدام المنتظم، ستلاحظين تفتيحاً ملحوظاً للبقع الداكنة، وتوحيداً للون البشرة، وإشراقة طبيعية صحية. نتائج مُثبتة سريرياً على بشرة المرأة الخليجية.',
       bullets: [
@@ -45,7 +45,7 @@ const PRODUCT_CONTENT: Record<string, {
   },
   'caffeine-roller': {
     problem: {
-      title: 'المشكلة: التعب والإجهاد يظهران على وجهك',
+      title: 'التعب والإجهاد يظهران على وجهك',
       description:
         'الهالات السوداء والانتفاخ تحت العين لا تظهر بالصدفة. ضغوط الحياة، قلة النوم، والجينات كلها عوامل، لكن السبب الخفي الأكبر هو ضعف الدورة الدموية في منطقة العين الحساسة.',
       bullets: [
@@ -55,7 +55,7 @@ const PRODUCT_CONTENT: Record<string, {
       ],
     },
     science: {
-      title: 'العلم: الكافيين + الببتيدات الطبية',
+      title: 'الكافيين + الببتيدات الطبية',
       description:
         'الكافيين 5% يُضيّق الأوعية الدموية ويُقلل تراكم السوائل بشكل فوري. ببتيد Syn-Ake يُقلل التجاعيد ويُشدد الجلد. الرولر المبرد يُعزز تدفق الليمف ويُقلص الانتفاخ من أول لمسة.',
       bullets: [
@@ -66,7 +66,7 @@ const PRODUCT_CONTENT: Record<string, {
       ],
     },
     relief: {
-      title: 'النتيجة: عيون مشرقة وشابة كل يوم',
+      title: 'عيون مشرقة وشابة كل يوم',
       description:
         'من الاستخدام الأول ستشعرين بالفرق. الانتفاخ يتقلص، والهالات تبدأ في التفتيح. بعد أسبوعين ستكتشفين أن أصدقاءك يسألون "نمتِ زين؟" في كل مرة يرونك.',
       bullets: [
@@ -79,7 +79,7 @@ const PRODUCT_CONTENT: Record<string, {
   },
   'sea-salt-scrub': {
     problem: {
-      title: 'المشكلة: مياه التحلية تدمر فروة رأسك',
+      title: 'مياه التحلية تدمر فروة رأسك',
       description:
         'مياه التحلية في المملكة العربية السعودية تحتوي على تركيز مرتفع من الكالسيوم والمغنيسيوم والكلور. هذه المعادن تتراكم على فروة رأسك يومياً، تسد البصيلات، وتُسبب التساقط والقشرة المزمنة.',
       bullets: [
@@ -89,7 +89,7 @@ const PRODUCT_CONTENT: Record<string, {
       ],
     },
     science: {
-      title: 'العلم: ملح البحر الميت + مجمع التجديد',
+      title: 'ملح البحر الميت + مجمع التجديد',
       description:
         'تركيبتنا تجمع بين القوة الميكانيكية لملح البحر الميت لإزالة الترسبات، وحمض السيتريك لموازنة درجة الحموضة، وزيت الأرجان لترطيب البصيلات، وبيوتين لتحفيز النمو.',
       bullets: [
@@ -100,7 +100,7 @@ const PRODUCT_CONTENT: Record<string, {
       ],
     },
     relief: {
-      title: 'النتيجة: شعر صحي وفروة رأس نظيفة',
+      title: 'شعر صحي وفروة رأس نظيفة',
       description:
         'من الاستخدام الأول ستشعرين بخفة فروة الرأس ونظافتها. بعد شهر ستلاحظين تقلصاً واضحاً في التساقط وبدء نمو شعر جديد. فروة رأسك ستتنفس مجدداً.',
       bullets: [
@@ -113,12 +113,6 @@ const PRODUCT_CONTENT: Record<string, {
   },
 }
 
-const reviews = [
-  { name: 'سارة ع.', rating: 5, text: 'نتيجة رائعة! ما توقعت يكون فرق بهذا الشكل.' },
-  { name: 'نورة م.', rating: 5, text: 'أفضل منتج جربته. أنصح فيه كل بنت.' },
-  { name: 'منى ق.', rating: 5, text: 'يستاهل كل ريال. سأعيد الطلب بالتأكيد.' },
-]
-
 export default function ProductSections({ product }: ProductSectionsProps) {
   const content = PRODUCT_CONTENT[product.slug]
   if (!content) return null
@@ -126,45 +120,56 @@ export default function ProductSections({ product }: ProductSectionsProps) {
   const { problem, science, relief } = content
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 py-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
 
       {/* The Problem */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div className="order-2 md:order-1 text-right">
-          <span className="badge bg-red-100 text-red-600 mb-4">❌ المشكلة</span>
-          <h2 className="text-xl md:text-2xl font-black text-gray-800 mb-4 leading-tight">{problem.title}</h2>
-          <p className="text-gray-600 leading-relaxed mb-5 text-sm">{problem.description}</p>
-          <ul className="space-y-2">
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="order-2 lg:order-1 text-right">
+          <span className="text-brand-blue/50 font-bold tracking-[0.2em] uppercase text-[10px] mb-4 block">The Problem</span>
+          <h2 className="text-3xl lg:text-4xl font-black text-brand-blue mb-6 leading-tight">{problem.title}</h2>
+          <p className="text-slate-500 leading-relaxed mb-8 text-base font-medium">{problem.description}</p>
+          <ul className="space-y-4">
             {problem.bullets.map((b) => (
-              <li key={b} className="flex items-start gap-2 text-sm text-gray-600">
-                <span className="text-red-500 mt-0.5 flex-shrink-0">⚠️</span>
+              <li key={b} className="flex items-start gap-4 text-sm text-slate-600 font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 flex-shrink-0" />
                 <span>{b}</span>
               </li>
             ))}
           </ul>
         </div>
-        <div className="order-1 md:order-2 flex justify-center">
-          <div className="w-48 h-48 md:w-64 md:h-64 rounded-3xl bg-red-50 border-2 border-red-100 flex items-center justify-center">
-            <span className="text-7xl md:text-8xl">😰</span>
+        <div className="order-1 lg:order-2">
+          <div className="relative w-full aspect-square rounded-[2rem] bg-brand-off-white flex items-center justify-center p-8 overflow-hidden group">
+            <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.03] mix-blend-overlay" />
+            <div className="w-full h-full border border-gray-200/60 rounded-[1.5rem] flex items-center justify-center bg-white shadow-sm group-hover:shadow-premium transition-all duration-700">
+              <svg className="w-32 h-32 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={0.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+            </div>
           </div>
         </div>
       </section>
 
       {/* The Science */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div className="flex justify-center">
-          <div className="w-48 h-48 md:w-64 md:h-64 rounded-3xl bg-brand-blue/5 border-2 border-brand-blue/10 flex items-center justify-center">
-            <span className="text-7xl md:text-8xl">🔬</span>
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div>
+          <div className="relative w-full aspect-square rounded-[2rem] bg-brand-blue flex items-center justify-center p-8 overflow-hidden group">
+            <div className="absolute inset-0 bg-premium-gradient opacity-90" />
+            <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.05] mix-blend-overlay" />
+            <div className="w-full h-full border border-white/10 rounded-[1.5rem] flex items-center justify-center bg-white/5 backdrop-blur-md shadow-2xl group-hover:bg-white/10 transition-all duration-700 relative z-10">
+              <svg className="w-32 h-32 text-brand-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={0.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+              </svg>
+            </div>
           </div>
         </div>
         <div className="text-right">
-          <span className="badge bg-brand-blue/10 text-brand-blue mb-4">🧪 العلم والتركيبة</span>
-          <h2 className="text-xl md:text-2xl font-black text-gray-800 mb-4 leading-tight">{science.title}</h2>
-          <p className="text-gray-600 leading-relaxed mb-5 text-sm">{science.description}</p>
-          <ul className="space-y-2">
+          <span className="text-brand-gold font-bold tracking-[0.2em] uppercase text-[10px] mb-4 block">The Science</span>
+          <h2 className="text-3xl lg:text-4xl font-black text-brand-blue mb-6 leading-tight">{science.title}</h2>
+          <p className="text-slate-500 leading-relaxed mb-8 text-base font-medium">{science.description}</p>
+          <ul className="space-y-4">
             {science.bullets.map((b) => (
-              <li key={b} className="flex items-start gap-2 text-sm text-gray-600">
-                <span className="text-brand-blue mt-0.5 flex-shrink-0">✓</span>
+              <li key={b} className="flex items-start gap-4 text-sm text-slate-600 font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-brand-gold mt-2 flex-shrink-0" />
                 <span>{b}</span>
               </li>
             ))}
@@ -173,44 +178,32 @@ export default function ProductSections({ product }: ProductSectionsProps) {
       </section>
 
       {/* The Relief */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div className="order-2 md:order-1 text-right">
-          <span className="badge bg-brand-green/10 text-brand-green mb-4">✨ النتيجة</span>
-          <h2 className="text-xl md:text-2xl font-black text-gray-800 mb-4 leading-tight">{relief.title}</h2>
-          <p className="text-gray-600 leading-relaxed mb-5 text-sm">{relief.description}</p>
-          <ul className="space-y-2">
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="order-2 lg:order-1 text-right">
+          <span className="text-brand-green font-bold tracking-[0.2em] uppercase text-[10px] mb-4 block">The Results</span>
+          <h2 className="text-3xl lg:text-4xl font-black text-brand-blue mb-6 leading-tight">{relief.title}</h2>
+          <p className="text-slate-500 leading-relaxed mb-8 text-base font-medium">{relief.description}</p>
+          <ul className="space-y-4">
             {relief.bullets.map((b) => (
-              <li key={b} className="flex items-start gap-2 text-sm text-gray-600">
-                <span className="text-brand-green mt-0.5 flex-shrink-0">🌟</span>
+              <li key={b} className="flex items-start gap-4 text-sm text-slate-600 font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-brand-green mt-2 flex-shrink-0" />
                 <span>{b}</span>
               </li>
             ))}
           </ul>
         </div>
-        <div className="order-1 md:order-2 flex justify-center">
-          <div className="w-48 h-48 md:w-64 md:h-64 rounded-3xl bg-brand-green/5 border-2 border-brand-green/10 flex items-center justify-center">
-            <span className="text-7xl md:text-8xl">✨</span>
+        <div className="order-1 lg:order-2">
+          <div className="relative w-full aspect-square rounded-[2rem] bg-brand-off-white flex items-center justify-center p-8 overflow-hidden group">
+            <div className="absolute inset-0 bg-brand-green/5 opacity-50" />
+            <div className="w-full h-full border border-brand-green/10 rounded-[1.5rem] flex items-center justify-center bg-white shadow-sm group-hover:shadow-premium transition-all duration-700 relative z-10">
+              <svg className="w-32 h-32 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={0.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Reviews */}
-      <section>
-        <h2 className="section-title mb-8">ماذا تقول عميلاتنا؟</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {reviews.map((r) => (
-            <div key={r.name} className="card p-4">
-              <div className="flex items-center gap-1 mb-2">
-                {[1, 2, 3, 4, 5].map((s) => (
-                  <span key={s} className="text-yellow-400 text-sm">★</span>
-                ))}
-              </div>
-              <p className="text-gray-600 text-sm leading-relaxed mb-3">{r.text}</p>
-              <p className="font-bold text-gray-800 text-sm">{r.name}</p>
-            </div>
-          ))}
-        </div>
-      </section>
     </div>
   )
 }
