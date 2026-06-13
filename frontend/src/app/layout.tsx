@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     site: '@wafabeauty',
   },
   verification: {
-    google: '',   // Add your Google Search Console verification token here
+    google: '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',
   },
 }
 
