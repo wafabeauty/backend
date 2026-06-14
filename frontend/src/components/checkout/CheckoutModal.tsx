@@ -71,6 +71,8 @@ export default function CheckoutModal() {
       const response = await submitOrder({
         fullName: data.fullName,
         phone: data.phone,
+        city: data.city,
+        address: data.address,
         items,
         totalAmount: getTotalAmount(),
         eventId,
@@ -227,6 +229,57 @@ export default function CheckoutModal() {
                 </svg>
                 <p className="text-xs font-medium">سيتصل بك مندوبنا لتأكيد الطلب خلال 24 ساعة</p>
               </div>
+            </div>
+
+            {/* City */}
+            <div>
+              <label className="block text-xs font-bold text-brand-blue uppercase tracking-widest mb-2">
+                المدينة <span className="text-brand-gold">*</span>
+              </label>
+              <select
+                {...register('city', { required: 'يرجى اختيار مدينتك' })}
+                className={`w-full bg-white border-2 rounded-2xl px-5 py-4 text-right font-medium focus:outline-none focus:border-brand-gold transition-colors shadow-sm ${
+                  errors.city ? 'border-red-400' : 'border-gray-100'
+                }`}
+                dir="rtl"
+              >
+                <option value="">اختاري مدينتك</option>
+                <option value="الرياض">الرياض</option>
+                <option value="جدة">جدة</option>
+                <option value="مكة المكرمة">مكة المكرمة</option>
+                <option value="المدينة المنورة">المدينة المنورة</option>
+                <option value="الدمام">الدمام</option>
+                <option value="الخبر">الخبر</option>
+                <option value="الظهران">الظهران</option>
+                <option value="الطائف">الطائف</option>
+                <option value="تبوك">تبوك</option>
+                <option value="بريدة">بريدة</option>
+                <option value="خميس مشيط">خميس مشيط</option>
+                <option value="حائل">حائل</option>
+                <option value="نجران">نجران</option>
+                <option value="جازان">جازان</option>
+                <option value="الجبيل">الجبيل</option>
+                <option value="أبها">أبها</option>
+                <option value="ينبع">ينبع</option>
+                <option value="أخرى">أخرى</option>
+              </select>
+              {errors.city && (
+                <p className="text-red-500 text-xs mt-2 font-bold">{errors.city.message}</p>
+              )}
+            </div>
+
+            {/* Address */}
+            <div>
+              <label className="block text-xs font-bold text-brand-blue uppercase tracking-widest mb-2">
+                العنوان التفصيلي <span className="text-slate-400 font-normal normal-case">(اختياري)</span>
+              </label>
+              <input
+                {...register('address')}
+                type="text"
+                placeholder="الحي، اسم الشارع..."
+                className="w-full bg-white border-2 border-gray-100 rounded-2xl px-5 py-4 text-right font-medium focus:outline-none focus:border-brand-gold transition-colors shadow-sm"
+                dir="rtl"
+              />
             </div>
 
             {/* Root error */}

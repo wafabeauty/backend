@@ -11,6 +11,8 @@ class Order(Base):
     id: Mapped[str] = mapped_column(String(36), primary_key=True)
     full_name: Mapped[str] = mapped_column(String(200), nullable=False)
     phone: Mapped[str] = mapped_column(String(20), nullable=False)
+    city: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
+    address: Mapped[Optional[str]] = mapped_column(String(500), nullable=True)
     items: Mapped[dict] = mapped_column(JSON, nullable=False)
     total_amount: Mapped[float] = mapped_column(Float, nullable=False)
     event_id: Mapped[str] = mapped_column(String(36), nullable=False, unique=True)
