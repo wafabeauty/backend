@@ -34,15 +34,13 @@ export interface CartItem {
 export interface CheckoutFormData {
   fullName: string
   phone: string
-  city: string
-  address?: string
+  address: string
 }
 
 export interface OrderPayload {
   fullName: string
   phone: string
-  city: string
-  address?: string
+  address: string
   items: CartItem[]
   totalAmount: number
   eventId: string

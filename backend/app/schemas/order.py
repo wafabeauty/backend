@@ -14,7 +14,6 @@ class CartItemSchema(BaseModel):
 class CreateOrderRequest(BaseModel):
     fullName: str
     phone: str
-    city: str = ""
     address: Optional[str] = None
     items: List[Any]
     totalAmount: float

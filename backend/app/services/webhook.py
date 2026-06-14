@@ -31,7 +31,6 @@ async def send_to_google_sheet(order: Order) -> bool:
         "orderId": order.id,
         "fullName": order.full_name,
         "phone": order.phone,
-        "city": order.city or "",
         "address": order.address or "",
         "items": _format_items(order.items if isinstance(order.items, list) else []),
         "totalAmount": order.total_amount,

@@ -43,7 +43,6 @@ async def create_order(
         id=order_id,
         full_name=payload.fullName,
         phone=payload.phone,
-        city=payload.city,
         address=payload.address,
         items=payload.items,
         total_amount=payload.totalAmount,
