@@ -27,21 +27,21 @@ export default function Footer() {
             <h3 className="font-bold text-white mb-6 text-sm tracking-widest uppercase">البروتوكول السريري</h3>
             <ul className="space-y-4">
               <li>
-                <Link href="/products/kojic-serum" className="text-white/60 hover:text-brand-gold transition-colors text-sm font-medium flex items-center gap-2">
+                <Link href="/products/astaxanthin-serum" className="text-white/60 hover:text-brand-gold transition-colors text-sm font-medium flex items-center gap-2">
                   <span className="w-1 h-1 bg-brand-gold rounded-full" />
-                  سيروم الكوجيك للتفتيح
+                  سيروم الأستاكسانثين للبقع
                 </Link>
               </li>
               <li>
-                <Link href="/products/caffeine-roller" className="text-white/60 hover:text-brand-gold transition-colors text-sm font-medium flex items-center gap-2">
+                <Link href="/products/grape-seed-eye-roller" className="text-white/60 hover:text-brand-gold transition-colors text-sm font-medium flex items-center gap-2">
                   <span className="w-1 h-1 bg-brand-gold rounded-full" />
-                  رولر الكافيين للعين
+                  رولر بذور العنب للهالات
                 </Link>
               </li>
               <li>
-                <Link href="/products/sea-salt-scrub" className="text-white/60 hover:text-brand-gold transition-colors text-sm font-medium flex items-center gap-2">
+                <Link href="/products/scalp-serum" className="text-white/60 hover:text-brand-gold transition-colors text-sm font-medium flex items-center gap-2">
                   <span className="w-1 h-1 bg-brand-gold rounded-full" />
-                  مقشر الديتوكس للشعر
+                  سيروم فروة الرأس للتساقط
                 </Link>
               </li>
             </ul>

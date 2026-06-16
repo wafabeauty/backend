@@ -44,7 +44,7 @@ export default function Header() {
             <Link href="/" className="text-sm font-bold text-slate-600 hover:text-brand-gold transition-colors tracking-wide">
               الرئيسية
             </Link>
-            <Link href="/products/kojic-serum" className="text-sm font-bold text-slate-600 hover:text-brand-gold transition-colors tracking-wide">
+            <Link href="/products/astaxanthin-serum" className="text-sm font-bold text-slate-600 hover:text-brand-gold transition-colors tracking-wide">
               البروتوكول السريري
             </Link>
             <Link href="/#about" className="text-sm font-bold text-slate-600 hover:text-brand-gold transition-colors tracking-wide">

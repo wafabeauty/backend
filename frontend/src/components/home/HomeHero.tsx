@@ -48,7 +48,7 @@ export default function HomeHero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 animate-slide-bottom" style={{ animationDelay: '0.6s' }}>
-              <Link href="/products/kojic-serum" className="btn-gold text-center">
+              <Link href="/products/astaxanthin-serum" className="btn-gold text-center">
                 اكتشفي البروتوكول
               </Link>
               <Link href="#products" className="bg-white/5 backdrop-blur-md border border-white/20 text-white font-bold py-4 px-10 rounded-full hover:bg-white/10 transition-all duration-300 text-center">

@@ -94,7 +94,7 @@ export default function HomePage() {
               انضمي إلى آلاف النساء السعوديات اللواتي استعدن ثقتهن ببشرتهن من خلال حلول طبية مُثبتة.
             </p>
             <a
-              href="/products/kojic-serum"
+              href="/products/astaxanthin-serum"
               className="inline-block bg-brand-gold text-brand-blue-dark font-black text-lg py-5 px-12 rounded-full hover:bg-brand-gold-light hover:shadow-[0_0_40px_rgba(212,175,55,0.3)] transition-all duration-300 active:scale-95"
             >
               اطلبي الآن – الدفع عند الاستلام
