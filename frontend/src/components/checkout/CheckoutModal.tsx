@@ -64,14 +64,11 @@ export default function CheckoutModal() {
     setEventId(eventId)
     setCheckoutData(data)
 
-    // Fire pixel purchase event immediately for deduplication
-    trackPurchase(eventId, getTotalAmount())
-
     try {
       const response = await submitOrder({
         fullName: data.fullName,
         phone: data.phone,
-        address: data.address,
+        address: `${data.city} - ${data.address}`,
         items,
         totalAmount: getTotalAmount(),
         eventId,
@@ -79,6 +76,9 @@ export default function CheckoutModal() {
       })
 
       setOrderId(response.orderId)
+
+      // Fire pixel only after confirmed order
+      trackPurchase(eventId, getTotalAmount())
 
       // Determine upsell product
       const cartSlugs = items.map((i) => i.product.slug)
@@ -230,15 +230,69 @@ export default function CheckoutModal() {
               </div>
             </div>
 
+            {/* City */}
+            <div>
+              <label className="block text-xs font-bold text-brand-blue uppercase tracking-widest mb-2">
+                المدينة <span className="text-brand-gold">*</span>
+              </label>
+              <select
+                {...register('city', { required: 'يرجى اختيار مدينتك' })}
+                className={`w-full bg-white border-2 rounded-2xl px-5 py-4 text-right font-medium focus:outline-none focus:border-brand-gold transition-colors shadow-sm appearance-none ${
+                  errors.city ? 'border-red-400' : 'border-gray-100'
+                }`}
+                dir="rtl"
+                defaultValue=""
+              >
+                <option value="" disabled>اختاري مدينتك...</option>
+                <optgroup label="المنطقة الوسطى">
+                  <option value="الرياض">الرياض</option>
+                  <option value="الخرج">الخرج</option>
+                  <option value="القصيم - بريدة">القصيم — بريدة</option>
+                  <option value="القصيم - عنيزة">القصيم — عنيزة</option>
+                </optgroup>
+                <optgroup label="المنطقة الغربية">
+                  <option value="جدة">جدة</option>
+                  <option value="مكة المكرمة">مكة المكرمة</option>
+                  <option value="المدينة المنورة">المدينة المنورة</option>
+                  <option value="الطائف">الطائف</option>
+                  <option value="ينبع">ينبع</option>
+                </optgroup>
+                <optgroup label="المنطقة الشرقية">
+                  <option value="الدمام">الدمام</option>
+                  <option value="الخبر">الخبر</option>
+                  <option value="الظهران">الظهران</option>
+                  <option value="الأحساء">الأحساء</option>
+                  <option value="الجبيل">الجبيل</option>
+                  <option value="حفر الباطن">حفر الباطن</option>
+                </optgroup>
+                <optgroup label="المنطقة الشمالية">
+                  <option value="تبوك">تبوك</option>
+                  <option value="حائل">حائل</option>
+                  <option value="سكاكا">سكاكا</option>
+                  <option value="عرعر">عرعر</option>
+                </optgroup>
+                <optgroup label="المنطقة الجنوبية">
+                  <option value="أبها">أبها</option>
+                  <option value="خميس مشيط">خميس مشيط</option>
+                  <option value="نجران">نجران</option>
+                  <option value="جازان">جازان</option>
+                  <option value="الباحة">الباحة</option>
+                </optgroup>
+              </select>
+              {errors.city && (
+                <p className="text-red-500 text-xs mt-2 font-bold">{errors.city.message}</p>
+              )}
+            </div>
+
             {/* Address */}
             <div>
               <label className="block text-xs font-bold text-brand-blue uppercase tracking-widest mb-2">
-                العنوان الكامل <span className="text-brand-gold">*</span>
+                الحي واسم الشارع <span className="text-brand-gold">*</span>
               </label>
               <input
-                {...register('address', { required: 'يرجى إدخال عنوانك الكامل' })}
+                {...register('address', { required: 'يرجى إدخال الحي واسم الشارع' })}
                 type="text"
-                placeholder="المدينة، الحي، اسم الشارع..."
+                placeholder="مثال: حي النزهة، شارع الملك فهد"
                 className={`w-full bg-white border-2 rounded-2xl px-5 py-4 text-right font-medium focus:outline-none focus:border-brand-gold transition-colors shadow-sm ${
                   errors.address ? 'border-red-400' : 'border-gray-100'
                 }`}
@@ -248,6 +302,27 @@ export default function CheckoutModal() {
                 <p className="text-red-500 text-xs mt-2 font-bold">{errors.address.message}</p>
               )}
             </div>
+
+            {/* Terms */}
+            <div className={`flex items-start gap-3 bg-white rounded-2xl p-4 border-2 transition-colors ${errors.agreedToTerms ? 'border-red-300' : 'border-gray-100'}`}>
+              <input
+                {...register('agreedToTerms', { required: 'يجب الموافقة على الشروط لإتمام الطلب' })}
+                type="checkbox"
+                id="terms"
+                className="w-5 h-5 mt-0.5 accent-brand-blue flex-shrink-0 cursor-pointer"
+              />
+              <label htmlFor="terms" className="text-xs text-slate-500 font-medium leading-relaxed cursor-pointer">
+                أوافق على{' '}
+                <a href="/terms" target="_blank" className="text-brand-blue font-bold hover:text-brand-gold transition-colors underline">الشروط والأحكام</a>
+                {' '}و{' '}
+                <a href="/privacy-policy" target="_blank" className="text-brand-blue font-bold hover:text-brand-gold transition-colors underline">سياسة الخصوصية</a>
+                {' '}و{' '}
+                <a href="/refund-policy" target="_blank" className="text-brand-blue font-bold hover:text-brand-gold transition-colors underline">سياسة الإرجاع</a>
+              </label>
+            </div>
+            {errors.agreedToTerms && (
+              <p className="text-red-500 text-xs font-bold -mt-3">{errors.agreedToTerms.message}</p>
+            )}
 
             {/* Root error */}
             {errors.root && (

@@ -11,12 +11,13 @@ export const metadata: Metadata = {
     template: '%s | وفاء للجمال',
   },
   description:
-    'وفاء للجمال – حلول تجميلية سريرية مصممة خصيصاً لمواجهة تحديات البيئة الخليجية. سيروم كوجيك أسيد، رولر الكافيين، مقشر ملح البحر. شحن سريع داخل السعودية، الدفع عند الاستلام.',
+    'وفاء للجمال – حلول تجميلية سريرية مصممة خصيصاً لمواجهة تحديات البيئة الخليجية. سيروم الأستاكسانثين وحمض الترانيكساميك، رولر بذور العنب للهالات، سيروم فروة الرأس للتساقط. شحن سريع داخل السعودية، الدفع عند الاستلام.',
   keywords: [
-    'وفاء للجمال', 'سيروم تفتيح البشرة', 'كوجيك أسيد', 'هالات سوداء',
-    'علاج التصبغات', 'رولر الكافيين', 'مقشر ملح البحر', 'منتجات تجميل سريرية',
-    'بشرة خليجية', 'الرياض', 'جدة', 'المملكة العربية السعودية', 'السعودية',
-    'Wafa Beauty', 'kojic serum Saudi Arabia', 'skincare KSA',
+    'وفاء للجمال', 'سيروم تفتيح البشرة', 'أستاكسانثين', 'حمض الترانيكساميك',
+    'هالات سوداء', 'رولر بذور العنب', 'تساقط الشعر', 'سيروم فروة الرأس',
+    'علاج التصبغات', 'منتجات تجميل سريرية', 'بشرة خليجية',
+    'الرياض', 'جدة', 'الدمام', 'المملكة العربية السعودية',
+    'Wafa Beauty', 'astaxanthin serum Saudi Arabia', 'skincare KSA', 'hair loss KSA',
   ],
   authors: [{ name: 'وفاء للجمال', url: SITE_URL }],
   creator: 'وفاء للجمال',
@@ -49,6 +50,7 @@ export const metadata: Metadata = {
   },
 }
 
+
 export default function RootLayout({
   children,
 }: {
@@ -63,6 +65,7 @@ export default function RootLayout({
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>

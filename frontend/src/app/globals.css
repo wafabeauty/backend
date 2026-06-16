@@ -5,10 +5,12 @@
 @tailwind utilities;
 
 :root {
-  --brand-blue: #0B192C;
-  --brand-blue-light: #1A365D;
-  --brand-green: #0E4D31;
-  --brand-gold: #D4AF37;
+  --brand-blue: #7B2D3E;
+  --brand-blue-light: #9B3A50;
+  --brand-green: #4E7A5F;
+  --brand-gold: #C9A47E;
+  --brand-cream: #FDF8F4;
+  --brand-blush: #F5E0D8;
 }
 
 * {
@@ -22,8 +24,8 @@ html {
 
 body {
   font-family: 'Tajawal', 'Cairo', system-ui, sans-serif;
-  background-color: #FAFAFA;
-  color: #0B192C;
+  background-color: #FDF8F4;
+  color: #521D29;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -70,7 +72,7 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D4AF37;
+  background: #C9A47E;
   border-radius: 4px;
 }
 
@@ -123,10 +125,10 @@ body {
   right: 0;
   z-index: 40;
   padding: 1.25rem 1rem;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(11, 25, 44, 0.05);
-  box-shadow: 0 -10px 30px rgba(11, 25, 44, 0.05);
+  background: rgba(253, 248, 244, 0.92);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(123, 45, 62, 0.08);
+  box-shadow: 0 -10px 30px rgba(123, 45, 62, 0.08);
 }
 
 @media (min-width: 768px) {

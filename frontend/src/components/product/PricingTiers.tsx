@@ -13,11 +13,16 @@ interface PricingTiersProps {
 
 export default function PricingTiers({ product }: PricingTiersProps) {
   const [selectedTier, setSelectedTier] = useState<PricingTier>(PRICING_TIERS[1])
-  const { addItem } = useCartStore()
+  const { addItem, buyNow } = useCartStore()
 
   const handleAddToCart = () => {
     addItem(product, selectedTier)
     trackAddToCart(product.nameAr, selectedTier.price)
+  }
+
+  const handleBuyNow = () => {
+    trackAddToCart(product.nameAr, selectedTier.price)
+    buyNow(product, selectedTier)
   }
 
   return (
@@ -116,10 +121,19 @@ export default function PricingTiers({ product }: PricingTiersProps) {
         ))}
       </div>
 
-      {/* CTA Button */}
+      {/* CTA Buttons */}
+      <button
+        onClick={handleBuyNow}
+        className="w-full bg-brand-gold text-brand-blue-dark font-black py-5 rounded-full hover:bg-brand-gold-light hover:shadow-[0_0_30px_rgba(212,175,55,0.3)] transition-all duration-300 active:scale-[0.98] text-lg flex items-center justify-center gap-3 mb-3"
+      >
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+        اطلبي الآن – {selectedTier.price} SAR
+      </button>
       <button
         onClick={handleAddToCart}
-        className="w-full bg-brand-blue text-white font-black py-5 rounded-full hover:bg-brand-blue-light hover:shadow-premium transition-all duration-300 active:scale-[0.98] shadow-lg shadow-brand-blue/20 text-lg flex items-center justify-center gap-3"
+        className="w-full bg-white text-brand-blue border-2 border-brand-blue/20 font-black py-4 rounded-full hover:border-brand-blue/50 hover:bg-brand-blue/5 transition-all duration-300 active:scale-[0.98] text-base flex items-center justify-center gap-3"
       >
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />

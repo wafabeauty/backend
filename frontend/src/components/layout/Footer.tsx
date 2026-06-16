@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="md:col-span-5">
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-12 rounded-full bg-brand-gold flex items-center justify-center">
-                <span className="text-brand-blue-dark font-black text-2xl">W</span>
+                <span className="text-brand-blue-dark font-black text-2xl">و</span>
               </div>
               <div className="leading-none flex flex-col justify-center">
                 <span className="font-black text-white text-xl tracking-tight">وفاء للجمال</span>

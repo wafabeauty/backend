@@ -8,8 +8,9 @@ export default function HomeHero() {
       <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.03] mix-blend-overlay" />
       
       {/* Abstract Glowing Orbs */}
-      <div className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] bg-brand-gold/10 rounded-full blur-[120px] mix-blend-screen animate-pulse" style={{ animationDuration: '8s' }} />
-      <div className="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-brand-green/20 rounded-full blur-[100px] mix-blend-screen" />
+      <div className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] bg-brand-gold/20 rounded-full blur-[120px] mix-blend-screen animate-pulse" style={{ animationDuration: '8s' }} />
+      <div className="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-brand-sand/30 rounded-full blur-[100px] mix-blend-screen" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-white/5 rounded-full blur-[80px]" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -18,10 +19,10 @@ export default function HomeHero() {
           <div className="text-right lg:pr-10">
             {/* Elegant Top Badge */}
             <div className="flex justify-center mb-8 w-full">
-              <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-5 py-2 animate-slide-bottom" style={{ animationDelay: '0.1s' }}>
-                <span className="w-1.5 h-1.5 bg-brand-gold rounded-full" />
-                <span className="text-xs font-bold text-brand-gold uppercase tracking-[0.2em]">Clinical Solutions</span>
-                <span className="w-1.5 h-1.5 bg-brand-gold rounded-full" />
+              <div className="inline-flex items-center gap-3 bg-white/8 backdrop-blur-md border border-brand-gold/30 rounded-full px-5 py-2 animate-slide-bottom" style={{ animationDelay: '0.1s' }}>
+                <span className="w-1.5 h-1.5 bg-brand-gold rounded-full animate-pulse" />
+                <span className="text-xs font-bold text-brand-gold uppercase tracking-[0.2em]">✦ حلول سريرية معتمدة ✦</span>
+                <span className="w-1.5 h-1.5 bg-brand-gold rounded-full animate-pulse" />
               </div>
             </div>
 
@@ -97,14 +98,14 @@ export default function HomeHero() {
               {/* Center Abstract Product Representation */}
               <div className="relative z-10 text-center animate-float" style={{ animationDelay: '2s' }}>
                 <div className="w-48 h-48 rounded-full bg-gradient-to-tr from-brand-gold/40 to-brand-gold/10 blur-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10" />
-                <div className="w-40 h-56 rounded-t-full rounded-b-3xl bg-white/10 border-2 border-white/30 backdrop-blur-md mx-auto flex items-center justify-center shadow-[inset_0_0_20px_rgba(255,255,255,0.2)]">
-                  <span className="text-brand-gold font-black text-4xl">W</span>
+                <div className="w-40 h-56 rounded-t-full rounded-b-3xl bg-white/10 border-2 border-brand-gold/40 backdrop-blur-md mx-auto flex items-center justify-center shadow-[inset_0_0_30px_rgba(201,164,126,0.15)]">
+                  <span className="text-brand-gold font-black text-5xl drop-shadow-lg">و</span>
                 </div>
               </div>
 
               <div className="mt-12 text-center relative z-10">
-                <p className="text-white font-bold text-xl tracking-wide">Wafa Beauty Protocol</p>
-                <p className="text-brand-gold text-sm tracking-[0.3em] uppercase mt-2">Dermatologist Approved</p>
+                <p className="text-white font-bold text-xl tracking-wide">وفاء للجمال</p>
+                <p className="text-brand-gold text-sm tracking-[0.3em] uppercase mt-2">✦ Dermatologist Approved ✦</p>
               </div>
 
               {/* Floating Element 2 */}

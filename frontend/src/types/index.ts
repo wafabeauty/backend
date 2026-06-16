@@ -34,7 +34,9 @@ export interface CartItem {
 export interface CheckoutFormData {
   fullName: string
   phone: string
+  city: string
   address: string
+  agreedToTerms: boolean
 }
 
 export interface OrderPayload {

@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { persist, createJSONStorage } from 'zustand/middleware'
 import { CartItem, CheckoutFormData, Product, PricingTier, UpsellState, CheckoutStep } from '@/types'
 import { PRICING_TIERS } from '@/lib/products'
 
@@ -15,6 +16,7 @@ interface CartStore {
   openDrawer: () => void
   closeDrawer: () => void
   addItem: (product: Product, tier?: PricingTier) => void
+  buyNow: (product: Product, tier?: PricingTier) => void
   addCrossSell: (product: Product) => void
   removeItem: (productId: string) => void
   clearCart: () => void
@@ -29,7 +31,9 @@ interface CartStore {
   setUpsellState: (state: UpsellState) => void
 }
 
-export const useCartStore = create<CartStore>((set, get) => ({
+export const useCartStore = create<CartStore>()(
+  persist(
+    (set, get) => ({
   items: [],
   isDrawerOpen: false,
   checkoutStep: 'cart',
@@ -60,6 +64,21 @@ export const useCartStore = create<CartStore>((set, get) => ({
         items: [...state.items, { product, quantity: selectedTier.quantity, tier: selectedTier }],
         isDrawerOpen: true,
       }
+    })
+  },
+
+  buyNow: (product: Product, tier?: PricingTier) => {
+    const selectedTier = tier || PRICING_TIERS[1]
+    set((state) => {
+      const existing = state.items.find((i) => i.product.id === product.id && !i.isUpsell)
+      const newItems = existing
+        ? state.items.map((i) =>
+            i.product.id === product.id && !i.isUpsell
+              ? { ...i, tier: selectedTier, quantity: selectedTier.quantity }
+              : i
+          )
+        : [...state.items, { product, quantity: selectedTier.quantity, tier: selectedTier }]
+      return { items: newItems, isDrawerOpen: false, checkoutStep: 'checkout' as const }
     })
   },
 
@@ -98,4 +117,11 @@ export const useCartStore = create<CartStore>((set, get) => ({
   setEventId: (id) => set({ eventId: id }),
   setUpsellProduct: (product) => set({ upsellProduct: product }),
   setUpsellState: (state) => set({ upsellState: state }),
-}))
+    }),
+    {
+      name: 'wafa-cart',
+      storage: createJSONStorage(() => localStorage),
+      partialize: (state) => ({ items: state.items }),
+    }
+  )
+)
