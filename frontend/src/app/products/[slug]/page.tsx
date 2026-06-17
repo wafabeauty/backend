@@ -11,6 +11,8 @@ import ProductSections from '@/components/product/ProductSections'
 import TrustBadges from '@/components/ui/TrustBadges'
 import ProductCard from '@/components/ui/ProductCard'
 import MobileStickyCTA from '@/components/product/MobileStickyCTA'
+import ProductTracker from '@/components/product/ProductTracker'
+import ProductFAQ from '@/components/product/ProductFAQ'
 import { getProductBySlug, getCrossSells, PRODUCTS } from '@/lib/products'
 
 interface PageProps {
@@ -77,6 +79,7 @@ export default function ProductPage({ params }: PageProps) {
   return (
     <>
       <Script id={`product-jsonld-${product.slug}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }} />
+      <ProductTracker product={product} />
       <Header />
       <CartDrawer />
       <CheckoutModal />
@@ -143,6 +146,11 @@ export default function ProductPage({ params }: PageProps) {
 
         {/* Product Sections */}
         <ProductSections product={product} />
+
+        {/* FAQ */}
+        <div className="border-t border-brand-blue/5 bg-brand-off-white">
+          <ProductFAQ slug={params.slug} />
+        </div>
 
         {/* Cross-sells */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-brand-off-white/50 border-t border-brand-blue/5">

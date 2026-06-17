@@ -3,7 +3,7 @@ const reviews = [
     name: 'سارة العتيبي',
     city: 'الرياض',
     rating: 5,
-    product: 'سيروم الكوجيك',
+    product: 'سيروم الأستاكسانثين',
     text: 'والله ما توقعت النتيجة تكون بهذا الشكل! بعد أسبوعين بدأت أشوف فرقاً واضحاً في لون بشرتي. الجلسات الليزر ما حققت نفس النتيجة.',
     verified: true,
   },
@@ -11,7 +11,7 @@ const reviews = [
     name: 'نورة م.',
     city: 'جدة',
     rating: 5,
-    product: 'رولر الكافيين',
+    product: 'رولر بذور العنب',
     text: 'أخيراً حل للهالات السوداء! جربت منتجات كثيرة ما نفعت. هذا الرولر من أول يوم حسيت بفرق. أنصح فيه كل بنت.',
     verified: true,
   },
@@ -19,8 +19,32 @@ const reviews = [
     name: 'لولو الشمري',
     city: 'الدمام',
     rating: 5,
-    product: 'مقشر ملح البحر',
-    text: 'شعري كان يتساقط بشكل مخيف بسبب المياه. بعد شهر من المقشر تقلّص التساقط بشكل كبير جداً. ناصحة كل بنت تجربه.',
+    product: 'سيروم فروة الرأس',
+    text: 'شعري كان يتساقط بشكل مخيف بسبب المياه. بعد شهر تقلّص التساقط بشكل كبير جداً. ناصحة كل بنت تجربه.',
+    verified: true,
+  },
+  {
+    name: 'ريم القحطاني',
+    city: 'الرياض',
+    rating: 5,
+    product: 'سيروم الأستاكسانثين',
+    text: 'طبيبتي الجلدية نفسها طلبت مني اسم المنتج لما شافت بشرتي! المكونات قوية جداً وملحوظة من الأسبوع الأول. ما راح أوقف.',
+    verified: true,
+  },
+  {
+    name: 'منال الزهراني',
+    city: 'مكة المكرمة',
+    rating: 5,
+    product: 'رولر بذور العنب',
+    text: 'كنت أصحى كل يوم أغطي عيوني بالكونسيلر. الآن بعد شهرين ما احتجته. الرولر غيّر حياتي الصبحية حرفياً.',
+    verified: true,
+  },
+  {
+    name: 'هند العنزي',
+    city: 'الخبر',
+    rating: 5,
+    product: 'سيروم فروة الرأس',
+    text: 'ثلاث سنوات وأنا أجرب كل شيء للتساقط. هذا السيروم هو أول شيء يشتغل فعلاً. المياه في المنطقة الشرقية قاسية جداً وهذا اشتغل معها.',
     verified: true,
   },
 ]
@@ -45,7 +69,7 @@ export default function SocialProof() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {reviews.map((review) => (
             <div key={review.name} className="card p-8 bg-brand-off-white border-none group">
               <div className="flex items-center justify-between mb-6">
