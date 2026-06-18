@@ -22,7 +22,7 @@ def _extract_sheet_fields(items: list[Any]) -> tuple[str, str, int]:
         tier = item.get("tier", {})
         upsell = " (عرض)" if item.get("isUpsell") or item.get("is_upsell") else ""
         name = product.get("nameAr") or product.get("nameEn") or "منتج"
-        sku = product.get("id") or product.get("slug") or "—"
+        sku = product.get("sku") or product.get("id") or product.get("slug") or "—"
         qty = tier.get("quantity") or item.get("quantity") or 1
         names.append(f"{name}{upsell}")
         skus.append(sku)
