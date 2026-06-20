@@ -42,6 +42,7 @@ class CreateOrderRequest(BaseModel):
 
 class UpsellUpdateRequest(BaseModel):
     accepted: bool
+    upsellProduct: Optional[Any] = None
 
 
 class OrderResponse(BaseModel):

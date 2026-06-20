@@ -17,6 +17,8 @@ from app.services.geoip import check_order_allowed
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/orders", tags=["orders"])
 
+UPSELL_PRICE = 99.0
+
 
 def _get_client_ip(request: Request) -> Optional[str]:
     forwarded_for = request.headers.get("X-Forwarded-For")
@@ -56,7 +58,7 @@ async def create_order(
     await db.commit()
     await db.refresh(order)
 
-    # Fire webhook + CAPI in background so they don't block the response
+    # CAPI only — Google Sheet webhook fires after upsell accept/decline
     asyncio.create_task(_post_order_tasks(order))
 
     return OrderResponse(
@@ -78,33 +80,52 @@ async def update_upsell(
     if not order:
         raise HTTPException(status_code=404, detail="الطلب غير موجود")
 
+    if order.webhook_sent:
+        return {"success": True, "accepted": order.accepted_upsell}
+
     order.accepted_upsell = payload.accepted
-    if payload.accepted:
-        order.total_amount = order.total_amount + 99
+
+    if payload.accepted and payload.upsellProduct:
+        items = list(order.items) if isinstance(order.items, list) else []
+        product = payload.upsellProduct if isinstance(payload.upsellProduct, dict) else {}
+        items.append(
+            {
+                "product": product,
+                "tier": {"quantity": 1, "price": UPSELL_PRICE, "labelAr": "عرض خاص"},
+                "quantity": 1,
+                "isUpsell": True,
+            }
+        )
+        order.items = items
+        order.total_amount = order.total_amount + UPSELL_PRICE
+        order.upsell_product_id = product.get("id") or product.get("slug")
 
     await db.commit()
     await db.refresh(order)
 
-    # Re-fire webhook with updated total
-    asyncio.create_task(send_to_google_sheet(order))
+    asyncio.create_task(_send_webhook_once(order))
 
     return {"success": True, "accepted": payload.accepted}
 
 
-async def _post_order_tasks(order: Order) -> None:
-    """Run webhook and CAPI calls asynchronously after order creation."""
+async def _send_webhook_once(order: Order) -> None:
+    """Send order to Google Sheet once after upsell is resolved."""
+    from app.database import AsyncSessionLocal
+
     webhook_ok = await send_to_google_sheet(order)
-    if webhook_ok:
-        from sqlalchemy.ext.asyncio import AsyncSession
-        from app.database import AsyncSessionLocal
+    if not webhook_ok:
+        return
 
-        async with AsyncSessionLocal() as db:
-            result = await db.execute(select(Order).where(Order.id == order.id))
-            fresh = result.scalar_one_or_none()
-            if fresh:
-                fresh.webhook_sent = True
-                await db.commit()
+    async with AsyncSessionLocal() as db:
+        result = await db.execute(select(Order).where(Order.id == order.id))
+        fresh = result.scalar_one_or_none()
+        if fresh:
+            fresh.webhook_sent = True
+            await db.commit()
 
+
+async def _post_order_tasks(order: Order) -> None:
+    """Run CAPI calls asynchronously after order creation."""
     await fire_all_capi(order, order.event_id)
 
     from app.database import AsyncSessionLocal

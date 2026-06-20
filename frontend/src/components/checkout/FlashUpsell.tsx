@@ -43,13 +43,13 @@ export default function FlashUpsell() {
     if (intervalRef.current) clearInterval(intervalRef.current)
 
     if (orderId) {
-      await confirmUpsell(orderId, true).catch(() => {})
+      await confirmUpsell(orderId, true, upsellProduct).catch(() => {})
     }
 
     clearCart()
     setCheckoutStep('cart')
     router.push(`/thank-you?order=${orderId}&upsell=yes`)
-  }, [isProcessing, orderId, clearCart, setCheckoutStep, router])
+  }, [isProcessing, orderId, upsellProduct, clearCart, setCheckoutStep, router])
 
   useEffect(() => {
     if (!isOpen) {

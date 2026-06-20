@@ -1,4 +1,4 @@
-import { OrderPayload, OrderResponse } from '@/types'
+import { OrderPayload, OrderResponse, Product } from '@/types'
 
 export async function validateIp(phone: string): Promise<{ allowed: boolean; message?: string }> {
   const res = await fetch('/api/validate-ip', {
@@ -29,10 +29,17 @@ export async function submitOrder(payload: OrderPayload): Promise<OrderResponse>
   return response.json()
 }
 
-export async function confirmUpsell(orderId: string, accepted: boolean): Promise<void> {
+export async function confirmUpsell(
+  orderId: string,
+  accepted: boolean,
+  upsellProduct?: Product | null,
+): Promise<void> {
   await fetch(`${API_URL}/api/orders/${orderId}/upsell`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ accepted }),
+    body: JSON.stringify({
+      accepted,
+      upsellProduct: accepted ? upsellProduct : null,
+    }),
   })
 }

@@ -37,6 +37,11 @@ class Settings(BaseSettings):
     SNAP_ACCESS_TOKEN: str = ""
     SNAP_PIXEL_ID: str = ""
 
+    # ── Admin Dashboard ───────────────────────────────────────────────────────
+    ADMIN_USERNAME: str = "admin"
+    ADMIN_PASSWORD: str = "changeme"
+    ADMIN_JWT_SECRET: str = "changeme-jwt-secret-32chars-min!!"
+
     # ── MaxMind GeoIP2 ────────────────────────────────────────────────────────
     # Get credentials at: https://www.maxmind.com/en/accounts/current/license-key
     ENABLE_GEOIP: bool = True

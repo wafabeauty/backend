@@ -3,21 +3,21 @@ import { Product, PricingTier } from '@/types'
 export const PRICING_TIERS: PricingTier[] = [
   {
     quantity: 1,
-    price: 199,
+    price: 139,
     labelAr: 'قطعة واحدة',
   },
   {
     quantity: 2,
-    price: 279,
+    price: 195,
     labelAr: 'قطعتان',
-    savings: 'وفري 119 ريال',
+    savings: 'وفري 83 ريال',
     popular: true,
   },
   {
     quantity: 3,
-    price: 349,
+    price: 244,
     labelAr: 'ثلاث قطع',
-    savings: 'وفري 248 ريال',
+    savings: 'وفري 173 ريال',
   },
 ]
 
@@ -27,12 +27,13 @@ export const PRODUCTS: Product[] = [
   {
     id: 'astaxanthin-serum',
     slug: 'astaxanthin-serum',
+    sku: 'WF-AXT-2847',
     nameAr: 'سيروم الأستاكسانثين وحمض الترانيكساميك',
     nameEn: 'Astaxanthin + Tranexamic Acid Brightening Serum',
     subtitleAr: 'المزيج الطبي الجديد لعلاج البقع الداكنة والتصبغات — أقوى بـ 6,000× من فيتامين سي',
     descriptionAr:
       'المرة الأولى في السوق: تركيبة تجمع الأستاكسانثين — ملكة مضادات الأكسدة — مع حمض الترانيكساميك 3% الذي باتت تصفه جميع طبيبات الجلدية في المملكة. يعمل على مستويين: يوقف إنتاج الميلانين من جذوره، ويمحو البقع الموجودة بسرعة مضاعفة.',
-    price: 199,
+    price: 139,
     imagePlaceholder: '/images/astaxanthin-serum.jpg',
     gradientFrom: '#7B2D3E',
     gradientTo: '#C9A47E',
@@ -50,12 +51,13 @@ export const PRODUCTS: Product[] = [
   {
     id: 'grape-seed-eye-roller',
     slug: 'grape-seed-eye-roller',
+    sku: 'WF-GSE-5913',
     nameAr: 'رولر بذور العنب الطبي للهالات السوداء',
     nameEn: 'Grape Seed OPC Medical Dark Circle Roller',
     subtitleAr: 'العلاج الوحيد الذي يعالج السبب الحقيقي للهالات — لا الكريمات ولا الكافيين',
     descriptionAr:
       'مستخلص بذور العنب OPC مع إنزيم SOD من البطيخ الفرنسي — التركيبة الحائزة على جوائز دولية والمثبتة سريرياً بتقليل الهالات 19% في 8 أسابيع. يعمل على تحسين الدورة الدموية الدقيقة تحت العين مباشرة، وهي السبب الجذري للهالات التي لم يعالجها أي رولر من قبل.',
-    price: 199,
+    price: 139,
     imagePlaceholder: '/images/grape-seed-eye-roller.jpg',
     gradientFrom: '#521D29',
     gradientTo: '#9B3A50',
@@ -73,12 +75,13 @@ export const PRODUCTS: Product[] = [
   {
     id: 'scalp-serum',
     slug: 'scalp-serum',
+    sku: 'WF-SCP-8374',
     nameAr: 'سيروم فروة الرأس بثمار المنشار والتوكوترينول',
     nameEn: 'Saw Palmetto & Tocotrienol Scalp Growth Serum',
     subtitleAr: 'البديل السريري للبيوتين — لأن شعرك يستحق ما هو أقوى وأثبت علمياً',
     descriptionAr:
       'بيوتين؟ جربتِه ولم يُجدِ. لأن تساقط الشعر له سبب أعمق: هرمون DHT الذي يُصغّر البصيلات ويُضعفها. سيرومنا يحتوي على مستخلص ثمار المنشار — المثبط الطبيعي الأول لـ DHT — إلى جانب التوكوترينول الذي رفع كثافة الشعر بنسبة 34.5% في تجربة سريرية معشاة محكومة.',
-    price: 199,
+    price: 139,
     imagePlaceholder: '/images/scalp-serum.jpg',
     gradientFrom: '#C9A47E',
     gradientTo: '#DEC4A8',

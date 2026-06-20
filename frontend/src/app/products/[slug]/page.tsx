@@ -13,6 +13,7 @@ import ProductCard from '@/components/ui/ProductCard'
 import MobileStickyCTA from '@/components/product/MobileStickyCTA'
 import ProductTracker from '@/components/product/ProductTracker'
 import ProductFAQ from '@/components/product/ProductFAQ'
+import BeforeAfter from '@/components/product/BeforeAfter'
 import { getProductBySlug, getCrossSells, PRODUCTS } from '@/lib/products'
 
 interface PageProps {
@@ -146,6 +147,9 @@ export default function ProductPage({ params }: PageProps) {
 
         {/* Product Sections */}
         <ProductSections product={product} />
+
+        {/* Before & After */}
+        <BeforeAfter slug={params.slug} />
 
         {/* FAQ */}
         <div className="border-t border-brand-blue/5 bg-brand-off-white">
