@@ -23,7 +23,7 @@ SKU_ALIASES = {
 
 # CODToop product IDs from seller dashboard
 FULFILLMENT_PRODUCT_IDS = {
-    "WF-BE": "CTNSPOCXNR",
+    "WF-BE": "CTNSP0CXNR",  # zero after CTNSP, not letter O
     "WF-RB": "CTNSPJXUC0",
     "WF-CG": "CTNSP5SYSQ",
 }
@@ -201,6 +201,8 @@ async def send_to_codtoop(order: Order) -> bool:
         },
         "total": float(order.total_amount or 0),
     }
+
+    logger.info(f"CODToop payload for order {order.id}: {payload}")
 
     try:
         async with httpx.AsyncClient(timeout=15.0) as client:
