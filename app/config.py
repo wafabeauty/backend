@@ -20,6 +20,11 @@ class Settings(BaseSettings):
     # Secret sent as X-Webhook-Secret header — verify it in your Apps Script
     SHEETS_WEBHOOK_SECRET: str = ""
 
+    # ── CODToop Fulfillment API ───────────────────────────────────────────────
+    ENABLE_CODTOOP_API: bool = True
+    # Full webhook URL including ?token=... from CODToop dashboard
+    CODTOOP_WEBHOOK_URL: str = ""
+
     # ── Facebook CAPI ─────────────────────────────────────────────────────────
     ENABLE_FB_CAPI: bool = True
     FB_API_VERSION: str = "v20.0"
