@@ -23,9 +23,9 @@ SKU_ALIASES = {
 
 # CODToop product IDs from seller dashboard
 FULFILLMENT_PRODUCT_IDS = {
-    "WF-BE": "CTNPNMW3U",
-    "WF-RB": "CTNP57O8B",
-    "WF-CG": "CTNPRREEB",
+    "WF-BE": "CTNSPOCXNR",
+    "WF-RB": "CTNSPJXUC0",
+    "WF-CG": "CTNSP5SYSQ",
 }
 
 PRODUCT_NAMES = {
@@ -274,7 +274,7 @@ async def send_to_google_sheet(order: Order) -> bool:
         headers["X-Webhook-Secret"] = settings.SHEETS_WEBHOOK_SECRET
 
     try:
-        async with httpx.AsyncClient(timeout=10.0) as client:
+        async with httpx.AsyncClient(timeout=10.0, follow_redirects=True) as client:
             response = await client.post(settings.WEBHOOK_SHEET_URL, json=payload, headers=headers)
             if response.status_code == 200:
                 logger.info(f"Webhook sent successfully for order {order.id}")
