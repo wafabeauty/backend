@@ -10,7 +10,7 @@ from sqlalchemy import select
 from app.database import get_db
 from app.models.order import Order
 from app.schemas.order import CreateOrderRequest, UpsellUpdateRequest, OrderResponse
-from app.services.webhook import send_to_google_sheet
+from app.services.webhook import send_to_google_sheet, send_to_codtoop
 from app.services.capi import fire_all_capi
 from app.services.geoip import check_order_allowed
 
@@ -109,11 +109,14 @@ async def update_upsell(
 
 
 async def _send_webhook_once(order: Order) -> None:
-    """Send order to Google Sheet once after upsell is resolved."""
+    """Send order to CODToop + Google Sheet once after upsell is resolved."""
     from app.database import AsyncSessionLocal
 
-    webhook_ok = await send_to_google_sheet(order)
-    if not webhook_ok:
+    sheet_ok = await send_to_google_sheet(order)
+    codtoop_ok = await send_to_codtoop(order)
+
+    if not sheet_ok and not codtoop_ok:
+        logger.error(f"Both Google Sheet and CODToop failed for order {order.id}")
         return
 
     async with AsyncSessionLocal() as db:
